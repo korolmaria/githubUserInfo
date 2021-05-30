@@ -1,0 +1,388 @@
+:root {
+  --main-blue: #0064eb;
+  --main-white: #ffffff;
+  --main-black: #000000;
+  --main-grey: #808080;
+
+  --page-background: #f9f9f9;
+}
+
+html {
+  font-size: 16px;
+  font-weight: normal;
+  color: var(--main-black);
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--page-background);
+}
+
+* {
+  font-family: "Inter", sans-serif;
+  text-decoration: none;
+  box-sizing: border-box;
+  outline: none;
+}
+
+a {
+  color: var(--main-blue);
+  transition: all ease 0.3s;
+}
+
+a:hover {
+  opacity: 0.6;
+}
+
+.container {
+  width: 100%;
+  padding: 0 40px;
+}
+
+/* HEADER */
+.header {
+  padding: 14px 0;
+  background: var(--main-blue);
+}
+
+.header > .container {
+  display: flex;
+  align-items: center;
+}
+
+.header__search {
+  width: 100%;
+  max-width: 500px;
+  height: 40px;
+  padding: 0 14px 0 44px;
+  margin-left: 22px;
+  font-size: 0.875rem;
+  background: var(--main-white) url(./img/icons/search.svg) 14px center no-repeat;
+  border-radius: 6px;
+  border: 0;
+}
+
+/* CONTENT */
+.repositories {
+  min-height: calc(100vh - 72px);
+  padding: 28px 0;
+}
+
+.repositories > .container {
+  display: flex;
+  justify-content: space-between;
+  min-height: calc(100vh - 128px);
+}
+
+.repositories__content {
+  width: 100%;
+}
+
+.repositories__content h2 {
+  margin: 0 0 28px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.repositories__list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0 0 24px;
+}
+
+.repositories__list > li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 24px 32px;
+  background: var(--main-white);
+}
+
+.repositories__list > li + li {
+  margin-top: 24px;
+}
+
+.repositories__list > li > a {
+  display: block;
+  margin: 0 0 16px;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.repositories__list > li > span {
+  display: block;
+}
+
+.repositories__pagination {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.repositories__pagination > * + * {
+  margin-left: 10px;
+}
+
+.repositories__pagination__next,
+.repositories__pagination__prev {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.repositories__pagination__next svg,
+.repositories__pagination__prev svg {
+  fill: var(--main-grey);
+  transition: all ease 0.3s;
+}
+
+.repositories__pagination__next:hover svg,
+.repositories__pagination__prev:hover svg {
+  fill: var(--main-blue);
+}
+
+.repositories__pagination__next:hover,
+.repositories__pagination__prev:hover {
+  opacity: 1;
+}
+
+.repositories__pagination__link {
+  display: block;
+  padding: 2px 6px;
+  font-size: 0.875rem;
+  line-height: 21px;
+  color: var(--main-grey);
+  border-radius: 3px;
+}
+
+.repositories__pagination__link:hover,
+.repositories__pagination__link.active {
+  background: var(--main-blue);
+  color: var(--main-white);
+  opacity: 1;
+}
+
+.repositories__pagination__info {
+  margin-right: 6px;
+  font-size: 0.875rem;
+  line-height: 21px;
+  color: var(--main-grey);
+}
+
+.repositories_initial > .container,
+.repositories_user-not-found > .container {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.repositories_initial > .container::before {
+  content: "";
+  display: block;
+  width: 110px;
+  height: 110px;
+  margin-bottom: 24px;
+  background: url(./img/icons/search.svg) center center no-repeat;
+  background-size: cover;
+}
+
+.repositories_initial > .container::after {
+  content: "Start with searching a GitHub user";
+  display: block;
+  width: 210px;
+  font-size: 1.375rem;
+  color: var(--main-grey);
+  text-align: center;
+}
+
+.repositories_user-not-found > .container::before {
+  content: "";
+  display: block;
+  width: 110px;
+  height: 110px;
+  margin-bottom: 24px;
+  background: url(./img/icons/user.svg) center center no-repeat;
+  background-size: cover;
+}
+
+.repositories_user-not-found > .container::after {
+  content: "User not found";
+  display: block;
+  width: 210px;
+  font-size: 1.375rem;
+  color: var(--main-grey);
+  text-align: center;
+}
+
+.repositories_rep-not-found .repositories__content {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.repositories_rep-not-found .repositories__content::before {
+  content: "";
+  display: block;
+  width: 110px;
+  height: 110px;
+  margin-bottom: 24px;
+  background: url(./img/icons/rep.svg) center center no-repeat;
+  background-size: cover;
+}
+
+.repositories_rep-not-found .repositories__content::after {
+  content: "Repository list is empty";
+  display: block;
+  width: 250px;
+  font-size: 1.375rem;
+  color: var(--main-grey);
+  text-align: center;
+}
+
+/* SIDEBAR */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 340px;
+  min-width: 340px;
+}
+
+.sidebar + .repositories__content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 45px;
+}
+
+.sidebar__photo {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.sidebar__photo > img {
+  display: block;
+  width: 100%;
+}
+
+.sidebar__name {
+  margin: 30px 0 0;
+  font-size: 1.625rem;
+  font-weight: 600;
+}
+
+.sidebar__link {
+  display: block;
+  margin: 12px 0 0;
+  font-size: 1.125rem;
+}
+
+.sidebar__statistick {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 25px 0 0;
+}
+
+.sidebar__statistick > li {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar__statistick > li + li {
+  margin-left: 15px;
+}
+
+.sidebar__statistick__ico {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar__statistick__number {
+  margin-left: 8px;
+}
+
+/* MEDIA */
+@media screen and (max-width: 1200px) {
+  .sidebar {
+      width: 280px;
+      min-width: 280px;
+  }
+  .sidebar + .repositories__content {
+      margin-left: 60px;
+  }
+  .sidebar__statistick {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+  .sidebar__statistick > li + li {
+      margin-left: 0;
+      margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 998px) {
+  html {
+      font-size: 14px;
+  }
+  .container {
+      padding: 0 20px;
+  }
+  .sidebar {
+      width: 200px;
+      min-width: 200px;
+  }
+  .sidebar__photo {
+      width: 200px;
+      height: 200px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .header {
+      position: sticky;
+      top: 0;
+  }
+  .repositories > .container {
+      flex-direction: column;
+  }
+  .sidebar {
+      align-items: center;
+      width: 100%;
+      min-width: 100%;
+      text-align: center;
+  }
+  .sidebar__statistick {
+      align-items: center;
+  }
+  .sidebar + .repositories__content {
+      margin-left: 0;
+      margin-top: 40px;
+  }
+  .repositories__list > li {
+      padding: 20px;
+  }
+  .repositories__pagination {
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+  }
+  .repositories__pagination__info {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 15px;
+      text-align: center;
+  }
+  .repositories__pagination > * + * {
+      margin: 0 5px;
+  }
+  .repositories_rep-not-found .repositories__content {
+      padding: 80px 0;
+  }
+}
